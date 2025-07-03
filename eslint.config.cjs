@@ -1,9 +1,9 @@
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
-import pluginPrettier from 'eslint-plugin-prettier';
-import pluginImport from 'eslint-plugin-import';
+const globals = require('globals');
+const tseslint = require('typescript-eslint');
+const pluginPrettier = require('eslint-plugin-prettier');
+const pluginImport = require('eslint-plugin-import');
 
-export default [
+module.exports = [
   {
     ignores: ['dist/', 'node_modules/', 'coverage/'],
   },
