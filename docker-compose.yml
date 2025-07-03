@@ -1,0 +1,33 @@
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: griefergames-verkaufsbot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - bot-netzwerk
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo-db
+    restart: unless-stopped
+    volumes:
+      - mongo-daten:/data/db
+    networks:
+      - bot-netzwerk
+    ports:
+      - "27017:27017"
+
+networks:
+  bot-netzwerk:
+    driver: bridge
+
+volumes:
+  mongo-daten:
+    driver: local
